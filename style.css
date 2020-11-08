@@ -1,0 +1,28 @@
+header {
+  text-align: center !important;
+  background-color: grey;
+  color: white;
+}
+
+.city {
+  align-content: center !important;
+  margin-top: 50px;
+}
+
+.cityList {
+  height: 400px;
+  width: 300px;
+  border: black solid 1px;
+}
+
+table,
+th,
+td {
+  height: 40px;
+  width: 100px;
+  border: 1px solid black;
+}
+.forecast {
+  text-align: center !important;
+  margin-top: 50px;
+}
