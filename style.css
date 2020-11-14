@@ -24,3 +24,7 @@ header {
   text-align: center !important;
   margin-top: 50px;
 }
+
+#cityForecast {
+  text-align: center !important;
+}
