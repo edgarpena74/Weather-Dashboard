@@ -9,17 +9,45 @@ let mainIcon = document.getElementById("mainIcon");
 let cityName = document.getElementById("cityName")
 let listItem = document.getElementById("listItem")
 
+function saveLocalStorage (city) {
+    var citys = JSON.parse(localStorage.getItem("citys")) || []
+    citys.push(city)
+    localStorage.setItem("citys", JSON.stringify(citys))
+}
 
+function getFromLocalStorage () {
+    var citys = JSON.parse(localStorage.getItem("citys")) || []
+    for (let index = 0; index < citys.length; index++) {
+        let addCity = document.createElement("li");
+        addCity.textContent = citys[index];
+        addCity.onclick = function(){
+        getCity(citys[index]);
+        }
+        list.prepend(addCity);
+        
+    }
+}
+getFromLocalStorage();
 
-
+function runGetCity () {
+    console.log("search was clicked")
+    let city = user.value;
+    let addCity = document.createElement("li");
+    addCity.textContent = city;
+    addCity.onclick = function(){
+        getCity(city);
+    }
+    list.prepend(addCity);
+    saveLocalStorage(city);
+    getCity(city)
+}
 
 
 console.log("before click func")
 
-function getCity() {
-    console.log("search was clicked")
-    let city = user.value;
-  
+function getCity(city) {
+   
+    
 
     
     //url for user search
@@ -58,12 +86,13 @@ function getCity() {
             // i will need to make a for loop for the list items
             // ***if i make a foreloop it would only be for data like
             // icon temp humidity for the 5 day forecast */
+            fiveDay.innerHTML = ""
             for (let index = 1; index < forData.length; index++) {
                 if (index > 5){
                 console.log("will break here")
                   break;
                 } else {
- 
+                    
                 //make a card with icon, temp, and humidity percent
                     let fiveIcon = data.list[index].weather[0].icon;
                     let fiveTemp = data.list[index].main.temp;
@@ -98,6 +127,13 @@ function getCity() {
                     
                 }    
             }
+
+            cityForecast.innerHTML = ""
+            cityName.innerHTML = ""
+            // mainWS.innerHTML = ""
+            // mainTemp.innerHTML = ""
+            // mainFL.innerHTML = ""
+            // mainHum.innerHTML = ""
 
             //City name and **********date
             let apiName = data.city.name;
@@ -140,7 +176,8 @@ function getCity() {
               //main Wind Speed
             let mainWS = document.createElement("div");
             mainWS.textContent = "Wind Speed: " + windSpeed + " MPH";
-
+            
+         
             //apending main elements
             cityName.appendChild(name)
             cityForecast.appendChild(mainWS);
@@ -166,16 +203,14 @@ function getCity() {
 //    let cityString = JSON.stringify(cityFetch)
 //    console.log("cityData stringfy " + cityString)
 
-    let addCity = document.createElement("li");
-    addCity.textContent = city;
-    list.prepend(addCity);
+    
 
     
 }
 
 console.log("after click")
 
-button.addEventListener("click", getCity)
+button.addEventListener("click", runGetCity)
 
 searchCity.addEventListener("submit", function(event){
     event.preventDefault();
