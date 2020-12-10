@@ -15,6 +15,15 @@ function saveLocalStorage (city) {
     localStorage.setItem("citys", JSON.stringify(citys))
 }
 
+function loadCity() {
+    var citys = JSON.parse(localStorage.getItem("citys")) || []
+    if (citys.length){
+        getCity(citys[citys.length -1])
+    } else {
+        getCity("atlanta")
+    }
+}
+loadCity();
 function getFromLocalStorage () {
     var citys = JSON.parse(localStorage.getItem("citys")) || []
     for (let index = 0; index < citys.length; index++) {
@@ -23,6 +32,7 @@ function getFromLocalStorage () {
         addCity.onclick = function(){
         getCity(citys[index]);
         }
+        addCity.classList.add("list-group-item", "list-group-item-action")
         list.prepend(addCity);
         
     }
@@ -33,6 +43,7 @@ function runGetCity () {
     console.log("search was clicked")
     let city = user.value;
     let addCity = document.createElement("li");
+    addCity.classList.add("list-group-item", "list-group-item-action")
     addCity.textContent = city;
     addCity.onclick = function(){
         getCity(city);
@@ -74,7 +85,19 @@ function getCity(city) {
                
                 let uv = response.value
                 let uvText = document.createElement("div")
-                uvText.textContent = "UV Index:  " + uv
+                let btn = document.createElement("button")
+                btn.classList.add("btn-sm");
+                btn.innerHTML = uv;
+                if (uv < 3){
+                    btn.classList.add("btn-success")
+                } else if (uv < 6){
+                    btn.classList.add("btn-warning")
+                } else {
+                    btn.classList.add("btn-danger")
+                }
+
+                uvText.textContent = "UV Index:  ";
+                uvText.appendChild(btn)
                
                 console.log(response.value + "   uv text")
                 cityForecast.appendChild(uvText)
