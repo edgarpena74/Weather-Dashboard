@@ -43,7 +43,7 @@ function runGetCity () {
 }
 
 
-console.log("before click func")
+
 
 function getCity(city) {
    
