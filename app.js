@@ -51,7 +51,7 @@ function getCity(city) {
 
     
     //url for user search
-    let URL = "http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&appid=de8be824ac11480024fa9aeef3ea6f60"
+    let URL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&appid=de8be824ac11480024fa9aeef3ea6f60"
 
     
 
@@ -64,7 +64,7 @@ function getCity(city) {
             
             let lon = data.city.coord.lon
             let lat = data.city.coord.lat
-            let uvURL = "http://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&appid=de8be824ac11480024fa9aeef3ea6f60";
+            let uvURL = "https://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&appid=de8be824ac11480024fa9aeef3ea6f60";
             
             fetch(uvURL)
              .then(response => response.json())
@@ -109,7 +109,7 @@ function getCity(city) {
                     
                     //create image section
                     let fiveColImg = document.createElement("img")
-                    let fiveURLimg = "http://openweathermap.org/img/wn/" + fiveIcon + "@2x.png";
+                    let fiveURLimg = "https://openweathermap.org/img/wn/" + fiveIcon + "@2x.png";
                     fiveColImg.src = fiveURLimg
 
                     
@@ -152,7 +152,7 @@ function getCity(city) {
      
             //Main Icon image
             let iconIMG = icon;
-            let urlIMG = "http://openweathermap.org/img/wn/" + iconIMG + "@2x.png";
+            let urlIMG = "https://openweathermap.org/img/wn/" + iconIMG + "@2x.png";
             console.log("icon test   " + iconIMG)
             mainIcon.src = urlIMG;
 
