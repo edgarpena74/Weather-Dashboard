@@ -130,10 +130,7 @@ function getCity(city) {
 
             cityForecast.innerHTML = ""
             cityName.innerHTML = ""
-            // mainWS.innerHTML = ""
-            // mainTemp.innerHTML = ""
-            // mainFL.innerHTML = ""
-            // mainHum.innerHTML = ""
+           
 
             //City name and **********date
             let apiName = data.city.name;
@@ -186,10 +183,7 @@ function getCity(city) {
             cityForecast.appendChild(mainHum);
             
 
-            // //i could mak*e an array and call the content
-            // let icon = document.createElement("p");
-            // icon.textContent = icon;
-            // cityForecast.appendChild(icon)
+            
             
 
           
@@ -200,8 +194,6 @@ function getCity(city) {
   
  
 
-//    let cityString = JSON.stringify(cityFetch)
-//    console.log("cityData stringfy " + cityString)
 
     
 
@@ -218,14 +210,3 @@ searchCity.addEventListener("submit", function(event){
 
 
 
-// $("#searchCity").on("click",
-//     fetch('http://api.openweathermap.org/data/2.5/forecast?q=London,UK&appid=de8be824ac11480024fa9aeef3ea6f60')
-//     .then(response => response.json())
-//     .then(data => console.log(data))
-// )
-
-
-
-// fetch('http://api.openweathermap.org/data/2.5/uvi?q=London.UK&appid=de8be824ac11480024fa9aeef3ea6f60')
-//   .then(response => response.json())
-//   .then(data => console.log(data));
