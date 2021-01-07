@@ -139,8 +139,14 @@ function getCity(city) {
                     //column humidity
                     let fiveColHum = document.createElement("div");
                     fiveColHum.textContent = "Humidity: " + fiveHum + "%";
+
+                    //Date
+                    let fiveColdate = document.createElement("div");
+                    fiveColdate.textContent = new Date(data.list[index].dt_txt).toLocaleDateString()
+
                     
                     fiveCol.appendChild(fiveColImg);
+                    fiveCol.appendChild(fiveColdate);
                     fiveCol.appendChild(fiveColTemp);
                     fiveCol.appendChild(fiveColHum);
                     
